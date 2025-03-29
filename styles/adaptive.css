@@ -1,0 +1,32 @@
+@media (min-width: 1200px) {
+    .header {
+      padding: 80px 60px;
+    }
+  
+    .logo_header {
+      font-size: 4rem;
+    }
+  
+    .menu_header {
+      font-size: 1.6rem;
+    }
+  
+    .bunny1,
+    .bunny2 {
+        width: 100px;
+    }
+  
+    .pink_underline {
+      width: 180%;
+      max-width: 600px;
+      bottom: -18px;
+    }
+  
+    .coffee_plot1 {
+      width: 20vw;
+      top: -80px;
+      right: 50px;
+      opacity: 0.5;
+    }
+  }
+  

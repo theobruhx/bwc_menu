@@ -1,0 +1,187 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  img {
+    cursor: url(../img/paw_cursor.png), auto;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    width: 100%;
+    min-height: 100vh;
+    background: #FFF4E3;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    cursor: url(../img/paw_cursor.png), auto;
+  }
+  
+  .header {
+    position: relative;
+    background-color: #FFF4E3;
+    padding: 120px 20px 40px 20px;
+    text-align: center;
+  }
+  
+  .logo-row {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    z-index: 2;
+  }
+  
+  .logo-center {
+    text-align: center;
+    flex: 1;
+    position: relative;
+  }
+  
+  .coffee_plot1 {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    width: 18vw;
+    max-width: 220px;
+    min-width: 100px;
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .bunny1,
+  .bunny2 {
+    width: clamp(120px, 10vw, 160px);
+    height: auto;
+    z-index: 1;
+    cursor: pointer;
+    transition: transform 1.8s ease-in-out, opacity 1.8s ease-in-out;
+    cursor: url(../img/paw_cursor.png), auto;
+  }
+  
+  .bunny-leave {
+    transform: translateY(-10px) rotate(-15deg);
+  }
+  
+  .bunny-swing {
+    animation: swing 1.4s ease-in-out infinite;
+  }
+  
+  .bunny-fall {
+    transform: translateY(80vh) rotate(90deg);
+    opacity: 0;
+  }
+  
+  .card-section {
+    position: relative;
+    margin-top: 40px;
+    padding-bottom: 60px;
+    z-index: 1;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px;
+  }
+  
+  .card {
+    width: clamp(200px, 25vw, 280px);
+    height: auto;
+    perspective: 1000px;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  
+  .card-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 140%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+  }
+  
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .card-front,
+  .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background-color: transparent;
+  }
+  
+  .card-front img,
+  .card-back img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+  }
+  
+  .coffee_plot2 {
+    position: absolute;
+    bottom: -40px;
+    left: 30px;
+    width: 18vw;
+    max-width: 220px;
+    min-width: 80px;
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .promo-block {
+    margin-top: 90px;
+    padding-left: 160px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .promo-title {
+    font-size: 2.5rem;
+    font-family: 'PlayfairDisplay', serif;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+  }
+  
+  .promo-underline {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130%;
+    max-width: 400px;
+    height: auto;
+    z-index: -1;
+  }
+  

@@ -1,0 +1,21 @@
+@keyframes swing {
+    0%   { transform: rotate(-10deg); }
+    50%  { transform: rotate(10deg); }
+    100% { transform: rotate(-10deg); }
+  }
+  
+  .bunny-leave {
+    transform: translateY(-10px) rotate(-15deg);
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .bunny-swing {
+    animation: swing 1.4s ease-in-out infinite;
+  }
+  
+  .bunny-fall {
+    transform: translateY(70vh) rotate(90deg);
+    opacity: 0;
+    transition: transform 2.5s ease-in-out, opacity 0.8s ease-in-out;
+  }
+  
