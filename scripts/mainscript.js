@@ -95,24 +95,23 @@ document.querySelectorAll('.card').forEach(card => {
     });
   });
   
-  const coffeeItems = document.querySelectorAll('.coffee-item');
+const coffeeItems = document.querySelectorAll('.coffee-item');
 const coffeeZone = document.querySelector('.coffee-zone');
 
 coffeeItems.forEach(item => {
+  item.style.cursor = 'grab';
   item.addEventListener('mousedown', onMouseDown);
+  item.ondragstart = () => false;
 
   function onMouseDown(e) {
     e.preventDefault();
 
     const zoneRect = coffeeZone.getBoundingClientRect();
-    const itemRect = item.getBoundingClientRect();
-    const shiftX = e.clientX - itemRect.left;
-    const shiftY = e.clientY - itemRect.top;
+    const shiftX = e.clientX - item.getBoundingClientRect().left;
+    const shiftY = e.clientY - item.getBoundingClientRect().top;
 
     item.style.zIndex = 10;
-    item.style.cursor = 'grabbing';
-
-    moveAt(e.pageX, e.pageY);
+    item.style.cursor = "url('../img/paw_cursor.png'), grabbing";
 
     function moveAt(pageX, pageY) {
       const left = pageX - zoneRect.left - shiftX;
@@ -122,17 +121,19 @@ coffeeItems.forEach(item => {
     }
 
     function onMouseMove(e) {
+      e.preventDefault(); // предотвращаем лаги
       moveAt(e.pageX, e.pageY);
     }
 
+    moveAt(e.pageX, e.pageY);
+
     document.addEventListener('mousemove', onMouseMove);
 
-    item.onmouseup = function () {
+    document.addEventListener('mouseup', function onMouseUp() {
       document.removeEventListener('mousemove', onMouseMove);
-      item.onmouseup = null;
+      document.removeEventListener('mouseup', onMouseUp);
       item.style.cursor = 'grab';
-    };
+    });
   }
-
-  item.ondragstart = () => false;
 });
+
