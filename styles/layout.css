@@ -463,7 +463,8 @@ html {
     position: relative;
     overflow: hidden;
     max-width: 100%;
-    margin: 200px auto 0 auto;
+    margin: 150px auto 0 auto;
+    z-index: 4;
   }
   
   .footer-inner {
@@ -492,4 +493,31 @@ html {
     opacity: 0.85;
     z-index: 1;
   }
+
+  .cup1 {
+    left: 120px;
+    top: 280px;
+    width: clamp(100px, 10vw, 120px);
+    z-index: 5;
+  }
   
+  .cup2 {
+    left: 200px;
+    top: 260px;
+    width: clamp(100px, 10vw, 120px);
+    z-index: 4;
+  }
+  
+  .glass1 {
+    left: 320px;
+    top: 187px;
+    width: clamp(110px, 11vw, 130px);
+    z-index: 5;
+  }
+  
+  .glass2 {
+    left: 387px;
+    top: 168px;
+    width: clamp(110px, 11vw, 130px);
+    z-index: 4;
+  }

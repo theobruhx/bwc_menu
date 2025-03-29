@@ -95,37 +95,41 @@ document.querySelectorAll('.card').forEach(card => {
     });
   });
   
-const coffeeItems = document.querySelectorAll('.coffee-item');
+  const coffeeItems = document.querySelectorAll('.coffee-item');
 const coffeeZone = document.querySelector('.coffee-zone');
 
 coffeeItems.forEach(item => {
   item.style.cursor = 'grab';
-  item.addEventListener('mousedown', onMouseDown);
-  item.ondragstart = () => false;
-
-  function onMouseDown(e) {
+  item.addEventListener('mousedown', function onMouseDown(e) {
     e.preventDefault();
 
     const zoneRect = coffeeZone.getBoundingClientRect();
-    const shiftX = e.clientX - item.getBoundingClientRect().left;
-    const shiftY = e.clientY - item.getBoundingClientRect().top;
+    const itemRect = item.getBoundingClientRect();
 
-    item.style.zIndex = 10;
-    item.style.cursor = "url('../img/paw_cursor.png'), grabbing";
+    const shiftX = e.clientX - itemRect.left;
+    const shiftY = e.clientY - itemRect.top;
+
+    const startLeft = itemRect.left - zoneRect.left;
+    const startTop = itemRect.top - zoneRect.top;
+
+    item.style.position = 'absolute';
+    item.style.left = `${startLeft}px`;
+    item.style.top = `${startTop}px`;
+    item.style.zIndex = 1000;
 
     function moveAt(pageX, pageY) {
-      const left = pageX - zoneRect.left - shiftX;
-      const top = pageY - zoneRect.top - shiftY;
-      item.style.left = `${left}px`;
-      item.style.top = `${top}px`;
-    }
+      const newLeft = pageX - zoneRect.left - shiftX;
+      const newTop = pageY - zoneRect.top - shiftY;
 
-    function onMouseMove(e) {
-      e.preventDefault(); // предотвращаем лаги
-      moveAt(e.pageX, e.pageY);
+      item.style.left = `${newLeft}px`;
+      item.style.top = `${newTop}px`;
     }
 
     moveAt(e.pageX, e.pageY);
+
+    function onMouseMove(e) {
+      moveAt(e.pageX, e.pageY);
+    }
 
     document.addEventListener('mousemove', onMouseMove);
 
@@ -134,6 +138,7 @@ coffeeItems.forEach(item => {
       document.removeEventListener('mouseup', onMouseUp);
       item.style.cursor = 'grab';
     });
-  }
-});
+  });
 
+  item.ondragstart = () => false;
+});
