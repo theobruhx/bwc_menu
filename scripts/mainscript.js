@@ -30,3 +30,109 @@ document.querySelectorAll('.card').forEach(card => {
     setupBunny(bunny2);
   });
   
+  document.addEventListener("DOMContentLoaded", () => {
+    const ticket = document.getElementById("ticket");
+  
+    let flipped = false;
+  
+    ticket.addEventListener("click", () => {
+      ticket.classList.add("shake");
+  
+      ticket.addEventListener("animationend", () => {
+        ticket.classList.remove("shake");
+  
+        if (!flipped) {
+          ticket.src = "./img/block2/ticket2.svg";
+          flipped = true;
+        } else {
+          ticket.src = "./img/block2/ticket.svg";
+          flipped = false;
+        }
+      }, { once: true });
+    });
+  });
+  
+  
+  document.querySelectorAll('.note').forEach(note => {
+    let offsetX = 0;
+    let offsetY = 0;
+    let isDragging = false;
+  
+    note.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      note.style.cursor = 'grabbing';
+  
+      const rect = note.getBoundingClientRect();
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+  
+      const parentRect = note.parentElement.getBoundingClientRect();
+      const left = rect.left - parentRect.left;
+      const top = rect.top - parentRect.top;
+  
+      note.style.left = `${left}px`;
+      note.style.top = `${top}px`;
+  
+      note.style.zIndex = 1000;
+    });
+  
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+  
+      const parentRect = note.parentElement.getBoundingClientRect();
+      const newLeft = e.clientX - parentRect.left - offsetX;
+      const newTop = e.clientY - parentRect.top - offsetY;
+  
+      note.style.left = `${newLeft}px`;
+      note.style.top = `${newTop}px`;
+    });
+  
+    document.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      note.style.cursor = 'grab';
+      note.style.zIndex = 10;
+    });
+  });
+  
+  const coffeeItems = document.querySelectorAll('.coffee-item');
+const coffeeZone = document.querySelector('.coffee-zone');
+
+coffeeItems.forEach(item => {
+  item.addEventListener('mousedown', onMouseDown);
+
+  function onMouseDown(e) {
+    e.preventDefault();
+
+    const zoneRect = coffeeZone.getBoundingClientRect();
+    const itemRect = item.getBoundingClientRect();
+    const shiftX = e.clientX - itemRect.left;
+    const shiftY = e.clientY - itemRect.top;
+
+    item.style.zIndex = 10;
+    item.style.cursor = 'grabbing';
+
+    moveAt(e.pageX, e.pageY);
+
+    function moveAt(pageX, pageY) {
+      const left = pageX - zoneRect.left - shiftX;
+      const top = pageY - zoneRect.top - shiftY;
+      item.style.left = `${left}px`;
+      item.style.top = `${top}px`;
+    }
+
+    function onMouseMove(e) {
+      moveAt(e.pageX, e.pageY);
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+
+    item.onmouseup = function () {
+      document.removeEventListener('mousemove', onMouseMove);
+      item.onmouseup = null;
+      item.style.cursor = 'grab';
+    };
+  }
+
+  item.ondragstart = () => false;
+});

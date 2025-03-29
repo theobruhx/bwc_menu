@@ -185,3 +185,241 @@ html {
     z-index: -1;
   }
   
+  .notes-wrapper {
+    position: relative;
+    width: 100%;
+    height: 630px;
+    margin-top: 60px;
+  }
+  
+  .note {
+    position: absolute;
+    width: clamp(300px, 30vw, 300px);
+    cursor: grab;
+    transition: transform 0.2s ease;
+  }
+  
+  .note1 {
+    top: 26%;
+    left: 60%;
+    z-index: 10;
+  }
+  
+  .note2 {
+    top: 28%;
+    left: 26%;
+    z-index: 8;
+  }
+  
+  .note3 {
+    top: 50%;
+    left: 2%;
+    z-index: 4;
+  }
+  
+  .note4 {
+    top: 8%;
+    left: 30%;
+    z-index: 3;
+  }
+  
+  .note5 {
+    top: 37%;
+    left: 13%;
+    z-index: 5;
+  }
+  
+  .note6 {
+    top: 1%;
+    left: 8%;
+    z-index: 8;
+  }
+  
+  .note7 {
+    top: 40%;
+    left: 50%;
+    z-index: 5;
+  }
+  
+  .note8 {
+    top: 6%;
+    left: 60%;
+    z-index: 6;
+  }
+  
+  .note9 {
+    top: 37%;
+    left: 33%;
+    z-index: 2;
+  }
+  
+  .note10 {
+    top: 54%;
+    left: 23%;
+    z-index: 1;
+  }
+  
+  .note11 {
+    top: 45%;
+    left: 70%;
+    z-index: 2;
+  }
+  
+  .note12 {
+    top: 10%;
+    left: 46%;
+    z-index: 3;
+  }
+  
+  .note13 {
+    top: 18%;
+    left: 4%;
+    z-index: 7;
+  }
+  
+  .ticket {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: clamp(500px, 26vw, 500px);
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .coffee-block {
+    position: relative;
+    padding: 100px 40px 80px 40px;
+  }
+  
+  .coffee-title-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 80px;
+  }
+  
+  .coffee-title {
+    font-size: 2.5rem;
+    font-family: 'PlayfairDisplay', serif;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+  }
+  
+  .coffee-underline {
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130%;
+    max-width: 400px;
+    height: auto;
+    z-index: -1;
+  }
+  
+  .coffee-zone-wrapper {
+    position: relative;
+    background-image: url('../img/block3/table.svg');
+    background-repeat: no-repeat;
+    background-position: center 100px; 
+    background-size: 100% 100%; 
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .coffee-zone {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .coffee-machine {
+    position: absolute;
+    left: 5%;
+    top: 40px;
+    width: clamp(320px, 35vw, 500px); 
+    height: auto;
+    z-index: 2;
+  }
+
+  .coffee-item {
+    position: absolute;
+    height: auto;
+    z-index: 3;
+    cursor: grab;
+  }
+  
+  .espresso {
+    left: 150px;
+    top: 620px;
+    width: clamp(100px, 10vw, 100px);
+  }
+  
+  .holder {
+    left: 480px;
+    top: 580px;
+    width: clamp(100px, 10vw, 100px);
+  }
+  
+  .pitcher {
+    left: 630px;
+    top: 540px;
+    width: clamp(200px, 20vw, 200px);
+  }
+  
+  .syrup-green {
+    left: 480px;
+    top: 200px;
+    width: clamp(80px, 10vw, 80px);
+  }
+  
+  .syrup-caramel {
+    left: 550px;
+    top: 270px;
+    width: clamp(80px, 10vw, 80px);
+  }
+  
+  .ice-cup {
+    left: 900px;
+    top: 400px;
+    width: clamp(150px, 15vw, 150px);
+  }
+  
+  .footer-block {
+    font-family: 'Merriweather', serif;
+    font-size: 24px;
+    color: #000;
+    padding: 100px 60px;
+    background-color: #FFF4E3;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .footer-left,
+  .footer-right {
+    z-index: 3;
+  }
+  
+  .footer-right {
+    text-align: right;
+  }
+  
+  .footer-stain {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    height: auto;
+    transform: rotate(180deg);
+    opacity: 0.85;
+    z-index: 1;
+  }
+  
